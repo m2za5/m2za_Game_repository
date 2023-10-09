@@ -9,7 +9,7 @@ import time
 pygame.init()
 
 #배경 음악 설정
-bullet_sound = pygame.mixer.Sound("C:/Users/ilove/Desktop/Games/pygame_1/music/shoot.mp3")  
+bullet_sound = pygame.mixer.Sound("C:/Users/ilove/Desktop/Games/pygame_1_edited version/music/shoot.mp3")  
 
 #게임창 옵션 설정        
 size = [400, 600]
@@ -25,8 +25,8 @@ clock = pygame.time.Clock()
 zombie_images = ['zombie.png', 'zombie2.png','zombie3.png','zombie4.png']
 heart_images = ["LeeFullHeart","LeeTwoLeftHeart","LeeOneLeftHeart"]
 zombie_sounds = [
-    "C:/Users/ilove/Desktop/Games/pygame_1/music/zombie_sounds1.mp3",
-    "C:/Users/ilove/Desktop/Games/pygame_1/music/zombie_sounds2.mp3"
+    "C:/Users/ilove/Desktop/Games/pygame_1_edited version/music/zombie_sounds1.mp3",
+    "C:/Users/ilove/Desktop/Games/pygame_1_edited version/music/zombie_sounds2.mp3"
 ]
 lastZombieSpawnTime = time.time()  # 이전 좀비가 생성된 시간을 저장
 zombieSpawnTime = 0.2  # 좀비 생성 간격 
@@ -44,9 +44,9 @@ class PhotoShop:
         self.move = 1.2
          # 생명 이미지 추가
         self.life_images = [
-            "C:/Users/ilove/Desktop/Games/pygame_1/heartImages/LeeFullHeart.png",
-            "C:/Users/ilove/Desktop/Games/pygame_1/heartImages/LeeTwoLeftHeart.png",
-            "C:/Users/ilove/Desktop/Games/pygame_1/heartImages/LeeOneLeftHeart.png"
+            "C:/Users/ilove/Desktop/Games/pygame_1_edited version/heartImages/LeeFullHeart.png",
+            "C:/Users/ilove/Desktop/Games/pygame_1_edited version/heartImages/LeeTwoLeftHeart.png",
+            "C:/Users/ilove/Desktop/Games/pygame_1_edited version/heartImages/LeeOneLeftHeart.png"
         ]
         self.life_index = 0  # 초기 생명 이미지 인덱스
     def insertPhoto(self, address):
@@ -68,7 +68,7 @@ class PhotoShop:
 class Bullet(PhotoShop):
     def __init__(self, x, y):
         super().__init__()
-        self.insertPhoto("C:/Users/ilove/Desktop/Games/pygame_1/images/bullet.png")
+        self.insertPhoto("C:/Users/ilove/Desktop/Games/pygame_1_edited version/images/bullet.png")
         self.resizePhoto(20, 20)
         self.x = x
         self.y = y
@@ -86,7 +86,7 @@ def boom(a,b):
 class Zombie(PhotoShop):
     def __init__(self):
         super().__init__()
-        self.insertPhoto(os.path.join("C:/Users/ilove/Desktop/Games/pygame_1/zombieImages", random.choice(zombie_images)))
+        self.insertPhoto(os.path.join("C:/Users/ilove/Desktop/Games/pygame_1_edited version/zombieImages", random.choice(zombie_images)))
         self.resizePhoto(90, 90)
         self.x = random.randrange(0, size[0] - self.xw - round(self.xw / 2))
         self.y = 10
@@ -95,14 +95,14 @@ class Zombie(PhotoShop):
          
 ##배경 설정
 background = PhotoShop()
-background.insertPhoto("C:/Users/ilove/Desktop/Games/pygame_1/images/game_background.png")
+background.insertPhoto("C:/Users/ilove/Desktop/Games/pygame_1_edited version/images/game_background.png")
 background.resizePhoto(size[0], size[1])
 background.set_position(0, 0)
 
     
 ##등장인물 리-설정
 Lee = PhotoShop()
-Lee.insertPhoto("C:/Users/ilove/Desktop/Games/pygame_1/images/LeeWithGun.png") 
+Lee.insertPhoto("C:/Users/ilove/Desktop/Games/pygame_1_edited version/images/LeeWithGun.png") 
 Lee.resizePhoto(120, 120)
 Lee.set_position(round(size[0] / 2) - Lee.image.get_width() // 2, size[1] - Lee.image.get_height() - 15)
 
@@ -115,7 +115,7 @@ mainText= mainfont.render("KILL ZOMBIE!", True, (255, 255, 255))
 subText = mainfont.render("PRESS SPACEBAR TO START", True, (255, 255, 255))
 
 # 인트로 음악 설정
-introBackgroundMusic = pygame.mixer.Sound("C:/Users/ilove/Desktop/Games/pygame_1/music/gameIntro.mp3")
+introBackgroundMusic = pygame.mixer.Sound("C:/Users/ilove/Desktop/Games/pygame_1_edited version/music/gameIntro.mp3")
 intro = True
 while intro:
     for event in pygame.event.get():
@@ -139,7 +139,7 @@ introBackgroundMusic.stop()
 
 #배경 음악 재생을 인트로 음악 재생보다 앞에 뒀을 경우
 #음악이 동시에 재생된다.
-backgroundMusic = pygame.mixer.Sound("C:/Users/ilove/Desktop/Games/pygame_1/music/8-bit-arcade-138828.mp3")
+backgroundMusic = pygame.mixer.Sound("C:/Users/ilove/Desktop/Games/pygame_1_edited version/music/8-bit-arcade-138828.mp3")
 backgroundMusic.play(-1) 
 
 #메인 이벤트
@@ -194,7 +194,7 @@ while WD == 0:
     #총알의 이동과 화면 출력        
     if moving_bullet and k % 40 == 0:
         bullet = PhotoShop()
-        bullet.insertPhoto("C:/Users/ilove/Desktop/Games/pygame_1/images/bullet.png")
+        bullet.insertPhoto("C:/Users/ilove/Desktop/Games/pygame_1_edited version/images/bullet.png")
         bullet.resizePhoto(20, 20)
         bullet.x = round(Lee.x + Lee.xw / 2 - bullet.xw / 2)
         bullet.y = Lee.y - 10 
@@ -220,7 +220,7 @@ while WD == 0:
         if currentTime - lastZombieSoundTime >= zombieSoundsTime: #새로운 좀비의 생성 시간을 저장
             lastZombieSoundTime = currentTime
             zombie = PhotoShop()
-            zombie.insertPhoto(os.path.join("C:/Users/ilove/Desktop/Games/pygame_1/zombieImages", random.choice(zombie_images)))
+            zombie.insertPhoto(os.path.join("C:/Users/ilove/Desktop/Games/pygame_1_edited version/zombieImages", random.choice(zombie_images)))
             zombie.resizePhoto(90, 90)
             zombie.x = random.randrange(0, size[0] - zombie.xw - round(zombie.xw / 2))
             zombie.y = 10
@@ -313,7 +313,7 @@ end_sub_text = end_font.render("Press any key to exit", True, (255, 0, 0))
 pygame.mixer.init()
 
 # 게임 종료 음악 설정
-gameOverMusic = pygame.mixer.Sound("C:/Users/ilove/Desktop/Games/pygame_1/music/gameOver.mp3")
+gameOverMusic = pygame.mixer.Sound("C:/Users/ilove/Desktop/Games/pygame_1_edited version/music/gameOver.mp3")
 
 # 게임 종료 음악 재생
 gameOverMusic.play()
